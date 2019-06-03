@@ -15,12 +15,11 @@ export class DetailPage implements OnInit {
   }
 
   ngOnInit() {
-    this.route.paramMap.pipe(
-      switchMap((params: ParamMap) => {
-        console.log("test");
-        console.log(params.get('index'))
-      })
-    )
+    
+    this.route.params.subscribe((res) => {
+      console.log(res.index)
+    })
+
   }
 
 }
