@@ -1,1 +1,10 @@
 Afficher le message "Bravo" dès que 10 clics seront atteints
+-----------------
+
+Modifier la liste des producteurs, de manière à afficher
+pour chacun d'entre eux, un logo/photo (url externe)
+-----------------
+
+Le clic sur un producteur affichera une page de détail
+contenant,au moins, la description correspondante
+-----------------
