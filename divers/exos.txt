@@ -1,0 +1,1 @@
+Afficher le message "Bravo" dès que 10 clics seront atteints

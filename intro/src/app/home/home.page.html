@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ title }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    IONIC Application introductive
+    <p>Tout va bien</p>
+    <p>{{ count }} clic(s)</p>
+
+    <p *ngIf="count >= 10">BRAVO !</p>
+
+    <ul>
+      <li *ngFor="let producer of producers">{{ producer }}</li>
+    </ul>
+
+    <button (click)="increment()">Incrémente</button>
+    <ion-button (click)="decrement()">Décrémente</ion-button>
+  </div>
+</ion-content>
