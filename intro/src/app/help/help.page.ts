@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./help.page.scss'],
 })
 export class HelpPage implements OnInit {
-  fruits: any[]
+  fruits: string[]
 
   constructor(private productService: ProductService) { }
 
@@ -17,11 +17,15 @@ export class HelpPage implements OnInit {
       .getFruits()
       .pipe(
         //map((fruits: any[]) => fruits.length)
-        map((fruits: any[]) => fruits[0].name.toUpperCase())
+        map((fruits: any[]) => {
+          let fruitsCapitalized = [];
+          fruits.forEach(fruit => fruitsCapitalized.push(fruit.name.toUpperCase()))
+          return fruitsCapitalized;
+        })
       )
-      .subscribe((res) => {
-        //this.fruits = fruits;
-        console.log(res)
+      .subscribe(fruitNames => {
+        this.fruits = fruitNames;
+
       })
   }
 
