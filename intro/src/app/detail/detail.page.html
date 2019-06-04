@@ -15,8 +15,13 @@
     </ion-card-header>
 
     <ion-card-content>
-        {{ producer.description }}
-      <ion-button (click)="toggleFavorite(producer)">Ajouter aux favoris</ion-button>
+      {{ producer.description }}
+      <ion-button *ngIf="isFavorite" color="danger" (click)="toggleFavorite(producer)">
+        Retirer des favoris
+      </ion-button>
+      <ion-button *ngIf="!isFavorite" (click)="toggleFavorite(producer)">
+        Ajouter des favoris
+      </ion-button>
     </ion-card-content>
   </ion-card>
     

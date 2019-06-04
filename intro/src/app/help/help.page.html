@@ -6,4 +6,7 @@
 
 <ion-content>
   Ceci est une page d'aide...
+  <ion-list>
+    <ion-item *ngFor="let fruit of fruits">{{ fruit.name }}</ion-item>
+  </ion-list>
 </ion-content>

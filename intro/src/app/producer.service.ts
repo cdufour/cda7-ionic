@@ -32,7 +32,6 @@ export class ProducerService {
   }
 
   toggleFavorite(producer: Producer) {
-
     let index = -1;
     for (var i=0; i<this.favoriteProducers.length; i++) {
       if (producer.name == this.favoriteProducers[i].name) {
@@ -43,12 +42,21 @@ export class ProducerService {
     if (index == -1) {
       // le producteur recherché n'est pas dans le tableau des favoris
       this.favoriteProducers.push(producer);
-      console.log('Producteur ajouté aux favoris');
     } else {
       // le producteur est déjà favori => on le retire du tableau
       this.favoriteProducers.splice(index, 1);
-      console.log('Producteur retiré des favoris');
     }
 
+  }
+
+  isFavorite(producer: Producer): boolean {
+    let index = -1;
+    for (var i=0; i<this.favoriteProducers.length; i++) {
+      if (producer.name == this.favoriteProducers[i].name) {
+        index = i;
+        break;
+      }
+    }
+    return index != -1 // retourne le résultat booléen de la comparaison
   }
 }

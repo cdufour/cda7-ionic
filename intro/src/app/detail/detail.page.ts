@@ -10,7 +10,8 @@ import { Producer } from '../../models/Producer';
   styleUrls: ['./detail.page.scss'],
 })
 export class DetailPage implements OnInit {
-  producer: Producer
+  producer: Producer;
+  isFavorite: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,13 +33,22 @@ export class DetailPage implements OnInit {
     )
     .subscribe((data) => {
       this.producer = 
-        this.producerService.getProducerByIndex(data.index)
+        this.producerService.getProducerByIndex(data.index);
+
+      // déterminer si ce producteur est dans les favoris
+      this.isFavorite = this.producerService.isFavorite(this.producer);
+      console.log(this.isFavorite);
+
     })
 
   }
 
   toggleFavorite(producer: Producer) {
     this.producerService.toggleFavorite(producer);
+    
+    // on évalue à nouveau la présence du producteur dans les favoris
+    // afin de mettre à jour le dom se basant sur this.isFavorite
+    this.isFavorite = this.producerService.isFavorite(this.producer);
   }
 
 }
