@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Producer } from '../../models/Producer';
+import { ProducerService } from '../producer.service';
 
 @Component({
   selector: 'app-home',
@@ -16,22 +17,14 @@ export class HomePage {
 
   constructor(
     public alertCtrl: AlertController,
-    public router: Router
+    public router: Router,
+    private producerService: ProducerService
     ) {
     //this.test()
     //this.producers = ['Bio Coop', 'Mihaela Miam Miam', 'Jardin des délices'];
-  
-    this.producers = [
-      new Producer('Bio Coop', 'https://media-cdn.tripadvisor.com/media/photo-s/0f/c9/b1/38/sofi-vera-pizza-napoletana.jpg'),
-      new Producer('Pofta mare', 'https://media-cdn.tripadvisor.com/media/photo-s/0f/c9/b1/38/sofi-vera-pizza-napoletana.jpg'),
-      new Producer('Giardino delizioso', 'https://media-cdn.tripadvisor.com/media/photo-s/0f/c9/b1/38/sofi-vera-pizza-napoletana.jpg')
-    ];
+    this.producers = this.producerService.getProducers();
 
-    for(var i=0; i<this.producers.length; i++) {
-      this.producers[i]
-      .setDescription("Chaîne implantée dans toute l'Alsace depuis 1963");
-    }
-
+ 
   }
 
   async presentAlert() {
